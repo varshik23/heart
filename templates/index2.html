@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ML API</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename = 'stylesheets/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename = 'stylesheets/app.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row position-relative">
+            <img class="img" src="{{ url_for('static',filename='images/heart2.jpeg') }}" alt="background">
+            <div class="position-absolute text-light text-end top-50 end-0 translate-middle-y me-5">
+                <h1>Heart Disease Prediction <br> Using Machine Learning</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center my-3">
+            <h2 class="text-center my-0">Enter Your Details</h2>
+        </div>
+        <div class="row justify-content-center align-items-start" id="text">
+
+            <div class="col-10 text-center">
+                <form action="{{ url_for('predict')}}" method="post" id='form' class="my-2">
+
+                    <div class="row g-6 inputs">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" title="Enter Your Age" id="floatingInputGrid"
+                                    name="age" required="required" />
+                                <label for="floatingInputGrid" class="fw-bold">Age</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating"><input type="text" class="form-control"
+                                    title="Enter 1 For Male, 0 For Female" id="floatingInputGrid" name="sex"
+                                    required="required" />
+                                <label for="floatingInputGrid" class="fw-bold">Sex</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating"><input type="text" class="form-control"
+                                    title="Enter Blood Pressure" id="floatingInputGrid" name="resting_blood_pressure"
+                                    required="required" />
+                                <label for="floatingInputGrid" class="fw-bold">Blood Pressure</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating"><input type="text" class="form-control" title="Enter Cholesterol"
+                                    id="floatingInputGrid" name="cholesterol" required="required" />
+                                <label for="floatingInputGrid" class="fw-bold">Cholesterol</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating"><input type="text" class="form-control"
+                                    title="Enter 1 - if (Blood Sugar > 120mg/dl), Else - 0" id="floatingInputGrid"
+                                    name="fasting_blood_sugar" required="required" />
+                                <label for="floatingInputGrid" class="fw-bold">Blood Sugar</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating"><input type="text" class="form-control"
+                                    title="Enter Max Heart Rate Achieved" id="floatingInputGrid"
+                                    name="max_heart_rate_achieved" required="required" />
+                                <label for="floatingInputGrid" class="fw-bold">Thalach</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-6 inputs">
+                        <div class="col-md">
+                            <div class="form-floating"><input type="text" class="form-control"
+                                    title="Enter 1 - If You Feel Pressure in the Chest, Jaw or Arm During Exercise or Stress, Else - 0"
+                                    id="floatingInputGrid" name="exercise_induced_angina" required="required" />
+                                <label for="floatingInputGrid" class="fw-bold">Exercise Induced Angina</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating"><input type="text" class="form-control"
+                                    title="ST Depression Induced by Exercise Relative to Rest" id="floatingInputGrid"
+                                    name="st_depression" required="required" />
+                                <label for="floatingInputGrid" class="fw-bold">Old Peak</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating"><input type="text" class="form-control"
+                                    title="Enter the Number of Cornary Arteries with Calcium Deposits(0-3)"
+                                    id="floatingInputGrid" name="num_major_vessels" required="required" />
+                                <label for="floatingInputGrid" class="fw-bold">Coronary Calcium Scan</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating"><input type="text" class="form-control"
+                                    title="Enter 1 - No Chest Pain, 0 - Chest Pain" id="floatingInputGrid"
+                                    name="chest_pain_type_asymptomatic" required="required" />
+                                <label for="floatingInputGrid" class="fw-bold">Chest Pain Type</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating"><input type="text class=" form-control"
+                                    title="Enter 1 - if there is ST Segment Shift relative to Exercise Induced Angina is Flat, Else-0"
+                                    id="floatingInputGrid"" class=" form-control" id="floatingInputGrid"
+                                    name="st_slope_type_flat" required="required" />
+                                <label for="floatingInputGrid" class="fw-bold">Slope</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating"><input type="text" class="form-control"
+                                    title="Enter 1 - If Blood Flow is not Normal, Else - 0" id="floatingInputGrid"
+                                    name="thalassemia_type_reversable_defect" required="required" />
+                                <label for="floatingInputGrid" class="fw-bold">Thalassemia Type</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger btn-lg my-2"><strong>Predict Heart
+                            disease</strong></button>
+                </form>
+                <h2 class="text-center">{{ prediction_text }}</h2>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
